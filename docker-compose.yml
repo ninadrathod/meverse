@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  
+  frontend: 
+    build:
+      context: ./frontend # Build from the 'frontend' directory
+      dockerfile: Dockerfile
+    ports:
+      - "80:80" 
+    volumes:
+      - ./frontend/public:/usr/share/nginx/html
