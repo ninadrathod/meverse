@@ -1,1 +1,3 @@
-/frontend/public/images/
+frontend/images/
+frontend/src/output.css
+frontend/package-lock.json

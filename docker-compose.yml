@@ -2,11 +2,38 @@ version: '3.8'
 
 services:
   
-  frontend: 
+  frontend:
+    image: ninadrathod/meverse-frontend
     build:
-      context: ./frontend # Build from the 'frontend' directory
+      context: ./frontend
       dockerfile: Dockerfile
-    ports:
-      - "80:80" 
+    container_name: frontend
+    networks:
+      - meverse-network
+    expose:
+      - 3000
     volumes:
-      - ./frontend/public:/usr/share/nginx/html
+      - ./frontend/src:/app/src
+      - ./frontend/index.html:/app/index.html
+      - ./frontend/script.js:/app/script.js
+    working_dir: /app
+    restart: always
+
+  nginx: 
+    image: nginx:latest
+    container_name: meverse-nginx
+    build:
+      context: ./nginx # Tells Docker Compose to build from your new nginx directory
+      dockerfile: Dockerfile # Use the Dockerfile in that directory
+    networks:
+      - meverse-network
+    ports:
+      - 80:80 # Map host's port 80 (default HTTP) to Nginx container's port 80
+      - 443:443 # Map host's port 443 (default HTTPS)
+    depends_on:
+      - frontend # Nginx needs the frontend to be available to proxy requests
+    restart: always
+  
+networks:
+  meverse-network:
+    driver: bridge

@@ -1,14 +1,28 @@
-# Use a lightweight Nginx image as the base
-FROM nginx:alpine
+FROM node:20-alpine
 
-# Copy your static frontend files from the 'public' directory
-# (relative to the Dockerfile's context, which is 'frontend/')
-# into Nginx's default web serving directory.
-COPY public/ /usr/share/nginx/html/
+# Set a working directory inside the image
+WORKDIR /app
 
-# Expose port 80, which is the default HTTP port Nginx listens on.
-# This is the container's internal port.
-EXPOSE 80
+# Copy package.json and package-lock.json (if present) first.
+# This optimizes Docker's build cache: if only source code changes, npm install won't re-run.
+COPY package*.json ./
 
-# Command to run Nginx in the foreground so Docker keeps the container running.
-CMD ["nginx", "-g", "daemon off;"]
+# Install project dependencies
+RUN npm install
+
+# Install 'serve' globally. This is needed because your package.json scripts
+# directly call 'serve'. If you were using 'npm start', this wouldn't be strictly
+# necessary if 'serve' was a local dependency and called via 'npx serve'.
+RUN npm install -g serve
+
+# Copy the rest of the application code into the container
+COPY . .
+
+# Define environment variables with defaults (can be overridden by docker-compose.yml)
+ENV PORT=3000
+
+# Expose the port the server will listen on
+EXPOSE $PORT
+
+# Command to start the application using the 'dev' script from package.json
+CMD [ "npm", "run", "dev" ]
