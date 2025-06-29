@@ -28,6 +28,7 @@
         section 2: GSAP animations for page content
       ---------------------------------------------------------- */
    
+  
     gsap.from("#cursor", {
         delay: 2,
         opacity:0,
@@ -38,17 +39,18 @@
         paddingLeft:"1%"
       });
 
+      gsap.to("#subtitle-prefix", {
+        duration:1,
+        delay:2,
+        text: "Showcase your"
+      });
+
     const Subtitle = document.getElementById("subtitle");
-    let tl = gsap.timeline({repeat: -1, delay:2, repeatDelay:0});
+    let tl = gsap.timeline({repeat: -1, delay:3, repeatDelay:0});
 
     tl.to(Subtitle, {duration:1.5, text: "Innovation", repeat:1, yoyo:true,  repeatDelay: 2})
       .to(Subtitle, {duration:1.5, text: "Skill", repeat:1, yoyo:true,  repeatDelay: 2})
       .to(Subtitle, {duration:1.5, text: "Passion", repeat:1, yoyo:true,  repeatDelay: 2})
       .to(Subtitle, {duration:1.5, text: "Journey", repeat:1, yoyo:true,  repeatDelay: 2})
 
-    gsap.from("#message", {
-      opacity:0,
-      duration:1,
-      delay:2,
-      x:100
-    });
+  
