@@ -6,7 +6,7 @@
       /* Grid line color options */
     --grid-color1: rgba(255,255,255,0.7); 
     --grid-color2: rgba(0,0,0,0.1); 
-    --animate-draw-stroke-params: 5s ease-in;
+    --animate-draw-stroke-params: 2s ease-in;
 
 }
 
@@ -103,14 +103,18 @@ body {
     color: rgba(26, 188, 156, 0.5);
 }
 
-#page-title-svg {
-  width: 100%;
-  height: 70vh;
+#title-subtitle {
   position: absolute;
   z-index: 0;
+  width: 100%;
+  height: 65vh;
   left: 10%;
+  top:30%;
 }
 
+#page-title-svg {
+  padding-left: 1%;
+}
 /* Default font styles for the whole text block (can be inherited by tspans) */
 #page-title-svg text {
   font-family: "Roboto", sans-serif; /* Set common font-family here */
@@ -118,6 +122,33 @@ body {
   letter-spacing: -0.05em; /* Set common letter-spacing here */  
 }
 
+#subtitle {
+  font-size: 10vh;
+  opacity: 0.8;
+  padding-left: 1%;
+}
+
+#cursor {
+  font-size: 10vh;
+  opacity: 0.8;
+  padding-left: 1%;
+}
+
+#message {
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(166, 58, 80, 0.8);
+  width: 100%;
+  height: 7%;
+  left: 10%;
+  bottom:25%;
+  font-size: 5vh;
+  opacity: 0.8;
+  padding-left: 1%;
+  color: rgba(255,255,255,1);
+  display: flex;       
+  align-items: center; 
+}
 
 /* Styles for the "me" part */
 .roboto-me {
