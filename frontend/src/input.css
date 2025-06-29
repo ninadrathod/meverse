@@ -104,17 +104,6 @@ body {
     color: rgba(26, 188, 156, 0.5);
 }
 
-
-#page-title-svg {
-  padding-left: 1%;
-}
-/* Default font styles for the whole text block (can be inherited by tspans) */
-#page-title-svg text {
-  font-family: "Roboto", sans-serif; /* Set common font-family here */
-  font-size: 20vh; /* Set common font-size here */
-  letter-spacing: -0.05em; /* Set common letter-spacing here */  
-}
-
 /* Styles for the "me" part */
 .roboto-me {
   /* Inherits font-family, font-size, letter-spacing from parent <text> */
@@ -136,3 +125,4 @@ body {
   fill: rgba(0, 128, 128, 0.8); /* Use fill for SVG text color */
   animation: draw-stroke-verse var(--animate-draw-stroke-params);
 }
+
