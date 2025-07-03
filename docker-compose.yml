@@ -7,7 +7,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: frontend
+    container_name: meverse-frontend
     ports:
       - "3000:3000" #Expose 3000 in container as 3000 on host
     volumes:
