@@ -1,6 +1,3 @@
-# Define project paths
-FRONTEND_DIR := frontend
-
 # Target to build and start the Docker Compose application
 build: 
 	@echo "Building and starting Docker Compose application..."
@@ -29,7 +26,7 @@ destroy_project:
 	docker system prune -a --volumes -f # Aggressively prune everything
 	@echo "All Docker resources related to project destroyed."
 	@echo "Deleting residual files from host directories..."
-	rm -rf $(FRONTEND_DIR)/src/output.css $(FRONTEND_DIR)/node_modules/ $(FRONTEND_DIR)/package-lock.json
+	rm -rf ./src/output.css ./node_modules/ ./package-lock.json
 	@echo "Clean-up complete."
 
-.PHONY: build up down rebuild destroy_projectdock
+.PHONY: build up down rebuild destroy_project
