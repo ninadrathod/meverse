@@ -68,18 +68,30 @@
         paddingLeft:"1%"
       });
 
-      gsap.to("#subtitle-prefix", {
-        duration:1,
-        delay:2,
-        text: "Showcase your"
-      });
-
+    // Get the subtitle element once
     const Subtitle = document.getElementById("subtitle");
-    let tl = gsap.timeline({repeat: -1, delay:4, repeatDelay:0});
 
-    tl.to(Subtitle, {duration:1.5, text: "Innovation", repeat:1, yoyo:true,  repeatDelay: 2})
-      .to(Subtitle, {duration:1.5, text: "Skill", repeat:1, yoyo:true,  repeatDelay: 2})
-      .to(Subtitle, {duration:1.5, text: "Passion", repeat:1, yoyo:true,  repeatDelay: 2})
-      .to(Subtitle, {duration:1.5, text: "Journey", repeat:1, yoyo:true,  repeatDelay: 2})
+    // Create a main timeline to orchestrate everything
+    let masterTl = gsap.timeline({ repeat: -1, repeatDelay: 0 }); // This timeline will repeat infinitely
 
+    // Add the initial #subtitle-prefix animation to the master timeline
+    masterTl.to("#subtitle-prefix", {
+        duration: 1,
+        delay: 4, // This delay is relative to the start of the master timeline
+        text: "Showcase your"
+    });
+
+    // Create a sub-timeline for the repeating #subtitle animation
+    // This timeline will be added to the masterTl
+    let subtitleRepeatTl = gsap.timeline();
+
+    subtitleRepeatTl.to(Subtitle, { duration: 1.5, text: "Innovation", repeat: 1, yoyo: true, repeatDelay: 2 })
+        .to(Subtitle, { duration: 1.5, text: "Skill", repeat: 1, yoyo: true, repeatDelay: 2 })
+        .to(Subtitle, { duration: 1.5, text: "Passion", repeat: 1, yoyo: true, repeatDelay: 2 })
+        .to(Subtitle, { duration: 1.5, text: "Journey", repeat: 1, yoyo: true, repeatDelay: 2 });
+
+    // Add the subtitleRepeatTl to the masterTl.
+    // It will start immediately after the "#subtitle-prefix" animation finishes.
+    // No explicit delay needed here, as it follows sequentially.
+    masterTl.add(subtitleRepeatTl);
     
