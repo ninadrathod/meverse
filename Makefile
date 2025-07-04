@@ -2,13 +2,13 @@
 build: 
 	@echo "Building and starting Docker Compose application..."
 	docker-compose up -d --build
-	docker exec -d -it frontend npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
+	docker exec -d -it meverse-frontend npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
 	@echo "Docker Compose application is running."
 
 up:
 	@echo "Building and starting Docker Compose application..."
 	docker-compose up -d
-	docker exec -d -it frontend npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
+	docker exec -d -it meverse-frontend npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
 	@echo "Docker Compose application is running."
 
 # Optional target to stop and remove containers

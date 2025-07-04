@@ -9,6 +9,7 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-gray-500: oklch(55.1% 0.027 264.364);
+    --spacing: 0.25rem;
     --tracking-tighter: -0.05em;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
@@ -166,6 +167,9 @@
   .static {
     position: static;
   }
+  .inset-0 {
+    inset: calc(var(--spacing) * 0);
+  }
   .z-0 {
     z-index: 0;
   }
@@ -187,14 +191,26 @@
       max-width: 96rem;
     }
   }
+  .mt-\[1\%\] {
+    margin-top: 1%;
+  }
   .mt-\[10\%\] {
     margin-top: 10%;
+  }
+  .mt-\[20\%\] {
+    margin-top: 20%;
+  }
+  .mt-\[20\] {
+    margin-top: 20;
   }
   .ml-\[5\%\] {
     margin-left: 5%;
   }
   .grid {
     display: grid;
+  }
+  .table {
+    display: table;
   }
   .h-auto {
     height: auto;
@@ -205,11 +221,39 @@
   .w-full {
     width: 100%;
   }
+  .border-collapse {
+    border-collapse: collapse;
+  }
+  .resize {
+    resize: both;
+  }
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
   .pl-\[1\%\] {
     padding-left: 1%;
   }
+  .pl-\[1\] {
+    padding-left: 1;
+  }
+  .align-middle {
+    vertical-align: middle;
+  }
+  .text-\[2vh\] {
+    font-size: 2vh;
+  }
+  .text-\[3vh\] {
+    font-size: 3vh;
+  }
   .text-\[5vh\] {
     font-size: 5vh;
+  }
+  .text-\[10vh\] {
+    font-size: 10vh;
   }
   .text-\[25vh\] {
     font-size: 25vh;
@@ -221,14 +265,36 @@
   .text-gray-500 {
     color: var(--color-gray-500);
   }
+  .underline {
+    text-decoration-line: underline;
+  }
   .opacity-80 {
     opacity: 80%;
   }
   .opacity-100 {
     opacity: 100%;
   }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
+  }
+  .md\:text-\[4vh\] {
+    @media (width >= 48rem) {
+      font-size: 4vh;
+    }
+  }
   .md\:text-\[7vh\] {
     @media (width >= 48rem) {
+      font-size: 7vh;
+    }
+  }
+  .lg\:text-\[6vh\] {
+    @media (width >= 64rem) {
+      font-size: 6vh;
+    }
+  }
+  .lg\:text-\[7vh\] {
+    @media (width >= 64rem) {
       font-size: 7vh;
     }
   }
@@ -237,54 +303,16 @@
       font-size: 9vh;
     }
   }
+  .lg\:text-\[10vh\] {
+    @media (width >= 64rem) {
+      font-size: 10vh;
+    }
+  }
 }
 :root {
   --bg-gradient: linear-gradient(135deg, #e0e0e0, #fceabb 95%);
   --grid-color1: rgba(255,255,255,0.7);
   --grid-color2: rgba(0,0,0,0.1);
-  --animate-draw-stroke-params: 2s ease-in;
-}
-@keyframes draw-stroke-me {
-  0% {
-    stroke: rgba(166, 58, 80, 0.8);
-    stroke-width: 1;
-    stroke-dasharray: 0 32%;
-    stroke-dashoffset: 25%;
-    fill: transparent;
-  }
-  50% {
-    stroke: rgba(166, 58, 80, 0.8);
-    stroke-width: 1;
-    fill: transparent;
-  }
-  80%, 100% {
-    stroke: transparent;
-    stroke-width: 0;
-    stroke-dasharray: 32% 0;
-    stroke-dashoffset: -25%;
-    fill: rgba(166, 58, 80, 0.8);
-  }
-}
-@keyframes draw-stroke-verse {
-  0% {
-    stroke: rgba(0, 128, 128, 0.8);
-    stroke-width: 1;
-    stroke-dasharray: 0 32%;
-    stroke-dashoffset: 25%;
-    fill: transparent;
-  }
-  50% {
-    stroke: rgba(0, 128, 128, 0.8);
-    stroke-width: 1;
-    fill: transparent;
-  }
-  80%, 100% {
-    stroke: transparent;
-    stroke-width: 0;
-    stroke-dasharray: 32% 0;
-    stroke-dashoffset: -25%;
-    fill: rgba(0, 128, 128, 0.8);
-  }
 }
 .montserrat-bg {
   font-family: "Montserrat", sans-serif;
@@ -326,25 +354,38 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   font-variation-settings: "wdth" 100;
-  fill: rgba(166, 58, 80, 0.8);
-  animation: draw-stroke-me var(--animate-draw-stroke-params);
+  color: rgba(166, 58, 80, 0.8);
 }
 .roboto-verse {
   font-weight: 350;
   font-optical-sizing: auto;
   font-style: normal;
   font-variation-settings: "wdth" 100;
-  fill: rgba(0, 128, 128, 0.8);
-  animation: draw-stroke-verse var(--animate-draw-stroke-params);
+  color: rgba(0, 128, 128, 0.8);
+}
+#title-container span {
+  display: inline-block;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }
 @property --tw-tracking {
   syntax: "*";
   inherits: false;
 }
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
       --tw-tracking: initial;
+      --tw-outline-style: solid;
     }
   }
 }

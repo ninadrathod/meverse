@@ -28,6 +28,35 @@
         section 2: GSAP animations for page content
       ---------------------------------------------------------- */
    
+  // --------------------------- title animation ------------------------------------
+   
+   var title = document.querySelector("#title-container")
+   var titleText = title.textContent;
+   var splittedText = titleText.split("");
+   console.log(splittedText);
+
+   // Creating text clutter
+   var clutter="";
+   let cntr = 0
+   splittedText.forEach(function(elem){
+    if(cntr < 2){clutter += `<span class="roboto-me text-[5vh] md:text-[7vh] lg:text-[10vh] tracking-tighter">${elem}</span>`;}
+    else{clutter += `<span class="roboto-verse text-[5vh] md:text-[7vh] lg:text-[10vh] tracking-tighter">${elem}</span>`;}
+    cntr++;
+   });
+
+   title.innerHTML = clutter;
+   console.log(title);
+
+   gsap.from("#title-container span", {
+    y:-50,
+    opacity:0,
+    delay:0.2,
+    duration:1,
+    stagger:0.1,
+    ease:"bounce.out"
+   });
+   
+  // --------------------------- subtite animation ----------------------------------
   
     gsap.from("#cursor", {
         delay: 2,
@@ -53,4 +82,4 @@
       .to(Subtitle, {duration:1.5, text: "Passion", repeat:1, yoyo:true,  repeatDelay: 2})
       .to(Subtitle, {duration:1.5, text: "Journey", repeat:1, yoyo:true,  repeatDelay: 2})
 
-  
+    

@@ -7,54 +7,7 @@
       /* Grid line color options */
     --grid-color1: rgba(255,255,255,0.7); 
     --grid-color2: rgba(0,0,0,0.1); 
-    --animate-draw-stroke-params: 2s ease-in;
 
-}
-
-@keyframes draw-stroke-me {
-  0% {
-    stroke: rgba(166, 58, 80, 0.8);
-    stroke-width: 1;
-    stroke-dasharray: 0 32%;
-    stroke-dashoffset: 25%;
-    fill: transparent;
-  }
-  50% {
-    stroke: rgba(166, 58, 80, 0.8);
-    stroke-width: 1;
-    fill: transparent;
-  }
-  80%,
-  100% {
-    stroke: transparent;
-    stroke-width: 0;
-    stroke-dasharray: 32% 0;
-    stroke-dashoffset: -25%;
-    fill: rgba(166, 58, 80, 0.8);
-  }
-}
-
-@keyframes draw-stroke-verse {
-  0% {
-    stroke: rgba(0, 128, 128, 0.8);
-    stroke-width: 1;
-    stroke-dasharray: 0 32%;
-    stroke-dashoffset: 25%;
-    fill: transparent;
-  }
-  50% {
-    stroke: rgba(0, 128, 128, 0.8);
-    stroke-width: 1;
-    fill: transparent;
-  }
-  80%,
-  100% {
-    stroke: transparent;
-    stroke-width: 0;
-    stroke-dasharray: 32% 0;
-    stroke-dashoffset: -25%;
-    fill: rgba(0, 128, 128, 0.8);
-  }
 }
 
 .montserrat-bg {
@@ -111,8 +64,7 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   font-variation-settings: "wdth" 100;
-  fill: rgba(166, 58, 80, 0.8); /* Use fill for SVG text color */
-  animation: draw-stroke-me var(--animate-draw-stroke-params);  
+  color: rgba(166, 58, 80, 0.8);
 }
 
 /* Styles for the "verse" part */
@@ -122,7 +74,9 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   font-variation-settings: "wdth" 100;
-  fill: rgba(0, 128, 128, 0.8); /* Use fill for SVG text color */
-  animation: draw-stroke-verse var(--animate-draw-stroke-params);
+  color: rgba(0, 128, 128, 0.8); 
 }
 
+#title-container span {
+  display: inline-block;
+}
