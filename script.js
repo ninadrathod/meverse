@@ -75,7 +75,7 @@
       });
 
     const Subtitle = document.getElementById("subtitle");
-    let tl = gsap.timeline({repeat: -1, delay:3, repeatDelay:0});
+    let tl = gsap.timeline({repeat: -1, delay:4, repeatDelay:0});
 
     tl.to(Subtitle, {duration:1.5, text: "Innovation", repeat:1, yoyo:true,  repeatDelay: 2})
       .to(Subtitle, {duration:1.5, text: "Skill", repeat:1, yoyo:true,  repeatDelay: 2})
