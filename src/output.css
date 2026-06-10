@@ -193,17 +193,11 @@
       max-width: 96rem;
     }
   }
-  .mt-\[10\%\] {
-    margin-top: 10%;
-  }
   .ml-\[5\%\] {
     margin-left: 5%;
   }
   .grid {
     display: grid;
-  }
-  .w-\[60\%\] {
-    width: 60%;
   }
   .w-\[90\%\] {
     width: 90%;
@@ -232,11 +226,6 @@
   }
   .opacity-100 {
     opacity: 100%;
-  }
-  .md\:w-\[80\%\] {
-    @media (width >= 48rem) {
-      width: 80%;
-    }
   }
   .md\:text-\[4vh\] {
     @media (width >= 48rem) {
@@ -316,77 +305,89 @@ body {
 #title-container span {
   display: inline-block;
 }
+#title-subtitle {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46%;
+}
 #subdomains {
   position: absolute;
-  bottom: 8%;
-  left: 5%;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 1;
+  width: 34%;
 }
 .subdomains-label {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  font-size: clamp(0.65rem, 1.4vh, 0.9rem);
+  font-size: clamp(0.65rem, 1.3vh, 0.85rem);
   color: rgba(0, 0, 0, 0.3);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.2rem;
 }
 .subdomains-grid {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 .subdomain-card {
   display: flex;
-  flex-direction: column;
-  padding: 1rem 1.4rem 0.85rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.6rem;
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 10px;
+  border-radius: 12px;
   text-decoration: none;
   cursor: pointer;
-  min-width: 130px;
   transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
 }
 .subdomain-card:hover {
-  transform: translateY(-5px);
+  transform: translateX(6px);
   background: rgba(255, 255, 255, 0.52);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.1);
+}
+.subdomain-card-text {
+  display: flex;
+  flex-direction: column;
 }
 .subdomain-name {
   font-family: "Roboto", sans-serif;
   font-weight: 350;
   font-variation-settings: "wdth" 100;
-  font-size: clamp(1rem, 2.4vh, 1.55rem);
+  font-size: clamp(1.2rem, 2.8vh, 1.9rem);
   color: rgba(0, 128, 128, 0.85);
   letter-spacing: -0.02em;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 .subdomain-root {
   font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-variation-settings: "wdth" 100;
-  font-size: clamp(0.55rem, 1.1vh, 0.78rem);
+  font-size: clamp(0.6rem, 1.2vh, 0.82rem);
   color: rgba(166, 58, 80, 0.65);
-  letter-spacing: 0.03em;
-  margin-top: 0.15rem;
+  letter-spacing: 0.04em;
+  margin-top: 0.2rem;
 }
 .subdomain-arrow {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  font-size: clamp(0.55rem, 0.9vh, 0.7rem);
-  color: rgba(0, 0, 0, 0.22);
-  letter-spacing: 0.05em;
-  margin-top: 0.65rem;
+  font-size: clamp(1rem, 2vh, 1.4rem);
+  color: rgba(0, 0, 0, 0.15);
   display: inline-block;
   transition: transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 1rem;
 }
 .subdomain-card:hover .subdomain-arrow {
-  transform: translateX(4px) translateY(-2px);
-  color: rgba(0, 128, 128, 0.5);
+  transform: translateX(4px) translateY(-3px);
+  color: rgba(0, 128, 128, 0.45);
 }
 @property --tw-tracking {
   syntax: "*";
