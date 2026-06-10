@@ -96,4 +96,27 @@ subtitleRepeatTl.to(Subtitle, { duration: 1.5, text: "Innovation", repeat: 1, yo
 // Add the subtitleRepeatTl to the masterTl.
 // It will start immediately after the "#subtitle-prefix" animation finishes.
 masterTl.add(subtitleRepeatTl);
+
+/* ----------------------------------------------------------
+     section 3: Subdomain portal animations
+   ---------------------------------------------------------- */
+
+gsap.set("#subdomains", { opacity: 0 });
+
+gsap.to(".subdomains-label", {
+  opacity: 1,
+  delay: 5,
+  duration: 0.7,
+  ease: "power2.out"
+});
+
+gsap.from(".subdomain-card", {
+  y: 24,
+  opacity: 0,
+  delay: 5.2,
+  duration: 0.75,
+  stagger: 0.18,
+  ease: "power2.out",
+  onStart: () => gsap.set("#subdomains", { opacity: 1 })
+});
     

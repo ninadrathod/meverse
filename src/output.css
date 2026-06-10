@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.11 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.3.0 | MIT License | https://tailwindcss.com */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @layer properties;
 @layer theme, base, components, utilities;
@@ -9,7 +9,6 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-gray-500: oklch(55.1% 0.027 264.364);
-    --spacing: 0.25rem;
     --tracking-tighter: -0.05em;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
@@ -147,6 +146,9 @@
   ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
     padding-block: 0;
   }
+  ::-webkit-calendar-picker-indicator {
+    line-height: 1;
+  }
   :-moz-ui-invalid {
     box-shadow: none;
   }
@@ -197,45 +199,17 @@
   .ml-\[5\%\] {
     margin-left: 5%;
   }
-  .block {
-    display: block;
-  }
   .grid {
     display: grid;
-  }
-  .table {
-    display: table;
   }
   .w-\[60\%\] {
     width: 60%;
   }
-  .w-\[70\%\] {
-    width: 70%;
-  }
-  .w-\[80\%\] {
-    width: 80%;
-  }
   .w-\[90\%\] {
     width: 90%;
   }
-  .w-auto {
-    width: auto;
-  }
-  .w-full {
-    width: 100%;
-  }
-  .border-collapse {
-    border-collapse: collapse;
-  }
-  .resize {
-    resize: both;
-  }
   .overflow-hidden {
     overflow: hidden;
-  }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
   }
   .pl-\[1\%\] {
     padding-left: 1%;
@@ -253,23 +227,11 @@
   .text-gray-500 {
     color: var(--color-gray-500);
   }
-  .underline {
-    text-decoration-line: underline;
-  }
   .opacity-80 {
     opacity: 80%;
   }
   .opacity-100 {
     opacity: 100%;
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
-  }
-  .md\:inline {
-    @media (width >= 48rem) {
-      display: inline;
-    }
   }
   .md\:w-\[80\%\] {
     @media (width >= 48rem) {
@@ -354,26 +316,86 @@ body {
 #title-container span {
   display: inline-block;
 }
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
+#subdomains {
+  position: absolute;
+  bottom: 8%;
+  left: 5%;
+  z-index: 1;
+}
+.subdomains-label {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.65rem, 1.4vh, 0.9rem);
+  color: rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+}
+.subdomains-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.subdomain-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.4rem 0.85rem;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  min-width: 130px;
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+.subdomain-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.52);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+.subdomain-name {
+  font-family: "Roboto", sans-serif;
+  font-weight: 350;
+  font-variation-settings: "wdth" 100;
+  font-size: clamp(1rem, 2.4vh, 1.55rem);
+  color: rgba(0, 128, 128, 0.85);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.subdomain-root {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-variation-settings: "wdth" 100;
+  font-size: clamp(0.55rem, 1.1vh, 0.78rem);
+  color: rgba(166, 58, 80, 0.65);
+  letter-spacing: 0.03em;
+  margin-top: 0.15rem;
+}
+.subdomain-arrow {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.55rem, 0.9vh, 0.7rem);
+  color: rgba(0, 0, 0, 0.22);
+  letter-spacing: 0.05em;
+  margin-top: 0.65rem;
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.subdomain-card:hover .subdomain-arrow {
+  transform: translateX(4px) translateY(-2px);
+  color: rgba(0, 128, 128, 0.5);
 }
 @property --tw-tracking {
   syntax: "*";
   inherits: false;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
-      --tw-border-style: solid;
       --tw-tracking: initial;
-      --tw-outline-style: solid;
     }
   }
 }
