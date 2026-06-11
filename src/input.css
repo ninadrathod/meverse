@@ -179,3 +179,91 @@ body {
   transform: translateX(5px) translateY(-4px);
   color: rgba(0, 128, 128, 0.45);
 }
+
+/* -------------------------------------------------------------
+    Responsive — mobile (portrait phones)
+   ------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  body {
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 12% 7%;
+    gap: 10%;
+    overflow-y: auto;
+    min-height: 100svh;
+  }
+
+  #title-subtitle {
+    flex: 0 0 auto;
+  }
+
+  #subtitle-row {
+    white-space: normal;
+    overflow: hidden;
+  }
+
+  #subtitle-prefix,
+  #subtitle,
+  #cursor {
+    font-size: clamp(0.85rem, 4.5vw, 1.3rem);
+  }
+
+  #subdomains {
+    flex: 0 0 auto;
+  }
+
+  .subdomains-grid {
+    gap: 0.75rem;
+  }
+
+  .subdomain-card {
+    padding: 0.95rem 1.3rem;
+    border-radius: 10px;
+  }
+
+  .subdomain-name {
+    font-size: clamp(1.2rem, 6vw, 1.8rem);
+  }
+
+  .subdomain-root {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+  }
+
+  .subdomain-arrow {
+    font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+    margin-left: 0.75rem;
+  }
+}
+
+/* -------------------------------------------------------------
+    Responsive — tablet (landscape phones + small tablets)
+   ------------------------------------------------------------- */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    padding: 0 5%;
+    gap: 3%;
+  }
+
+  #title-subtitle {
+    flex: 0 0 46%;
+  }
+
+  #subdomains {
+    flex: 0 0 46%;
+  }
+
+  .subdomain-card {
+    padding: 1.2rem 1.6rem;
+  }
+
+  .subdomain-name {
+    font-size: clamp(1.3rem, 3vh, 2rem);
+  }
+
+  .subdomain-root {
+    font-size: clamp(1.1rem, 2.5vh, 1.8rem);
+  }
+}
