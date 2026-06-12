@@ -11,6 +11,7 @@ A personal landing page at [meverse.in](https://meverse.in) — a showcase of my
 | [cicd-concepts.meverse.in](https://cicd-concepts.meverse.in) | CI/CD concepts tutorial |
 | [docker-tute.meverse.in](https://docker-tute.meverse.in) | Docker tutorial |
 | [k8s-tute.meverse.in](https://k8s-tute.meverse.in) | Kubernetes tutorial |
+| [agentic-ai-tute.meverse.in](https://agentic-ai-tute.meverse.in) | Agentic AI tutorial |
 
 ## Stack
 
