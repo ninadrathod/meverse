@@ -9,6 +9,7 @@ A personal landing page at [meverse.in](https://meverse.in) — a showcase of my
 | [ninad.meverse.in](https://ninad.meverse.in) | Personal site |
 | [linux-for-sre.meverse.in](https://linux-for-sre.meverse.in) | Linux for SRE tutorial |
 | [cicd-concepts.meverse.in](https://cicd-concepts.meverse.in) | CI/CD concepts tutorial |
+| [system-design-tute.meverse.in](https://system-design-tute.meverse.in) | System design tutorial |
 | [github-actions-tute.meverse.in](https://github-actions-tute.meverse.in) | GitHub Actions tutorial |
 | [microservices-tute.meverse.in](https://microservices-tute.meverse.in) | Microservices tutorial |
 | [github-tute.meverse.in](https://github-tute.meverse.in) | GitHub tutorial |
