@@ -7,6 +7,7 @@ A personal landing page at [meverse.in](https://meverse.in) — a showcase of my
 | Subdomain | Description |
 |---|---|
 | [ninad.meverse.in](https://ninad.meverse.in) | Personal site |
+| [deploy-simulator.meverse.in](https://deploy-simulator.meverse.in) | Deploy simulator |
 | [linux-for-sre.meverse.in](https://linux-for-sre.meverse.in) | Linux for SRE tutorial |
 | [cicd-concepts.meverse.in](https://cicd-concepts.meverse.in) | CI/CD concepts tutorial |
 | [system-design-tute.meverse.in](https://system-design-tute.meverse.in) | System design tutorial |

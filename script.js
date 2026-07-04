@@ -53,7 +53,8 @@
     delay:0.2,
     duration:1,
     stagger:0.1,
-    ease:"bounce.out"
+    ease:"bounce.out",
+    onComplete: showSubdomains
    });
    
   // --------------------------- subtite animation ----------------------------------
@@ -103,20 +104,24 @@ masterTl.add(subtitleRepeatTl);
 
 gsap.set("#subdomains", { opacity: 0 });
 
-gsap.to(".subdomains-label", {
-  opacity: 1,
-  delay: 5,
-  duration: 0.7,
-  ease: "power2.out"
-});
+function showSubdomains() {
+  gsap.set("#subdomains", { opacity: 1 });
 
-gsap.from(".subdomain-card", {
-  y: 24,
-  opacity: 0,
-  delay: 5.2,
-  duration: 0.75,
-  stagger: 0.18,
-  ease: "power2.out",
-  onStart: () => gsap.set("#subdomains", { opacity: 1 })
-});
+  gsap.from(".subdomain-section-title", {
+    opacity: 0,
+    y: 10,
+    duration: 0.7,
+    stagger: 0.15,
+    ease: "power2.out"
+  });
+
+  gsap.from(".subdomain-card", {
+    y: 24,
+    opacity: 0,
+    duration: 0.75,
+    stagger: 0.18,
+    ease: "power2.out",
+    clearProps: "transform"
+  });
+}
     
