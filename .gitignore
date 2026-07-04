@@ -1,3 +1,4 @@
 images/
 package-lock.json
 node_modules/
+./.cursor/rules/voice-input-confirmation.mds
