@@ -9,6 +9,7 @@ A personal landing page at [meverse.in](https://meverse.in) — a showcase of my
 | [ninad.meverse.in](https://ninad.meverse.in) | Personal site |
 | [deploy-simulator.meverse.in](https://deploy-simulator.meverse.in) | Deploy simulator |
 | [codex-of-colour.meverse.in](https://codex-of-colour.meverse.in) | Codex of Colour |
+| [portfolios-for-all.meverse.in](https://portfolios-for-all.meverse.in) | Portfolios for All |
 | [linux-for-sre.meverse.in](https://linux-for-sre.meverse.in) | Linux for SRE tutorial |
 | [cicd-concepts.meverse.in](https://cicd-concepts.meverse.in) | CI/CD concepts tutorial |
 | [system-design-tute.meverse.in](https://system-design-tute.meverse.in) | System design tutorial |
