@@ -10,21 +10,23 @@
     <!--Create grid on top of the background -->    
     <svg class="grid" width="100%" height="100%"></svg>
 
-    <div id="title-subtitle">
-        
-        <div id="title-container" class="overflow-hidden pl-[1%]"><span class="roboto-me text-[5vh] md:text-[7vh] lg:text-[10vh] tracking-tighter">me</span>
-            <span class="roboto-verse text-[5vh] md:text-[7vh] lg:text-[10vh] tracking-tighter">verse.</span></div>
-    
-        <div id="subtitle-row" class="pl-[1%]">
-            <span id="subtitle-prefix" class="montserrat-bg opacity-100 text-gray-500"></span>
-            <span id="subtitle" class="montserrat-bg opacity-80"></span>
-            <span id="cursor" class="montserrat-bg opacity-80">_</span>
-        </div>
-    </div>
-    
-    <!-- Subdomain portals -->
-    <div id="subdomains">
-        <section class="subdomain-section">
+    <main class="meverse-page">
+        <header class="site-hero">
+            <div id="title-subtitle">
+                <div id="title-container" class="overflow-hidden"><span class="roboto-me text-[4vh] md:text-[5.5vh] lg:text-[7.5vh] tracking-tighter">me</span>
+                    <span class="roboto-verse text-[4vh] md:text-[5.5vh] lg:text-[7.5vh] tracking-tighter">verse.</span></div>
+
+                <div id="subtitle-row">
+                    <span id="subtitle-prefix" class="montserrat-bg opacity-100 text-gray-500"></span>
+                    <span id="subtitle" class="montserrat-bg opacity-80"></span>
+                    <span id="cursor" class="montserrat-bg opacity-80">_</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Subdomain portals -->
+        <div id="subdomains" class="site-catalog">
+        <section class="subdomain-section catalog-panel catalog-panel--projects">
             <h2 class="subdomain-section-title">Projects</h2>
             <div class="subdomains-grid">
                 <a href="https://ninad.meverse.in/" class="subdomain-card" target="_blank" rel="noopener noreferrer">
@@ -72,7 +74,7 @@
             </div>
         </section>
 
-        <section class="subdomain-section">
+        <section class="subdomain-section catalog-panel catalog-panel--tutorials">
             <h2 class="subdomain-section-title">Tutorials</h2>
             <div class="subdomains-grid">
             <a href="https://linux-for-sre.meverse.in/" class="subdomain-card" target="_blank" rel="noopener noreferrer">
@@ -147,7 +149,8 @@
             </a>
             </div>
         </section>
-    </div>
+        </div>
+    </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js" integrity="sha512-8BkFnMa5pqmphA7XoSbkjP2qX7Gqlkel2C+p1g1AH1tW4cBJs2tumC0Zn9eNRBOKbe3dW9OtbYh/vpkGuZNTMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

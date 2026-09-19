@@ -33,34 +33,31 @@
    var title = document.querySelector("#title-container")
    var titleText = title.textContent;
    var splittedText = titleText.split("");
-   console.log(splittedText);
-
    // Creating text clutter
    var clutter="";
    let cntr = 0
    splittedText.forEach(function(elem){
-    if(cntr < 2){clutter += `<span class="roboto-me text-[5vh] md:text-[7vh] lg:text-[10vh] tracking-tighter">${elem}</span>`;}
-    else{clutter += `<span class="roboto-verse text-[5vh] md:text-[7vh] lg:text-[10vh] tracking-tighter">${elem}</span>`;}
+    if(cntr < 2){clutter += `<span class="roboto-me text-[4vh] md:text-[5.5vh] lg:text-[7.5vh] tracking-tighter">${elem}</span>`;}
+    else{clutter += `<span class="roboto-verse text-[4vh] md:text-[5.5vh] lg:text-[7.5vh] tracking-tighter">${elem}</span>`;}
     cntr++;
    });
 
    title.innerHTML = clutter;
-   console.log(title);
 
-   gsap.from("#title-container span", {
-    y:-50,
-    opacity:0,
-    delay:0.2,
-    duration:1,
-    stagger:0.1,
-    ease:"bounce.out",
-    onComplete: showSubdomains
-   });
+   gsap.timeline()
+    .from("#title-container span", {
+      y: -36,
+      opacity: 0,
+      duration: 0.42,
+      stagger: 0.04,
+      ease: "power3.out",
+    })
+    .add(showSubdomains, 0.22);
    
   // --------------------------- subtite animation ----------------------------------
   
     gsap.from("#cursor", {
-        delay: 2,
+        delay: 0.55,
         opacity:0,
         repeat:-1,
         yoyo:true,
@@ -77,8 +74,8 @@ let masterTl = gsap.timeline(); // Removed repeat: -1 from here
 
 // Add the initial #subtitle-prefix animation to the master timeline
 masterTl.to("#subtitle-prefix", {
-    duration: 1,
-    delay: 4, // This delay is relative to the start of the master timeline
+    duration: 0.65,
+    delay: 0.75,
     text: "Showcase your"
 });
 
@@ -89,10 +86,10 @@ let subtitleRepeatTl = gsap.timeline({
     repeatDelay: 0 // No delay between repeats of this sub-timeline
 });
 
-subtitleRepeatTl.to(Subtitle, { duration: 1.5, text: "Innovation", repeat: 1, yoyo: true, repeatDelay: 2 })
-    .to(Subtitle, { duration: 1.5, text: "Skill", repeat: 1, yoyo: true, repeatDelay: 2 })
-    .to(Subtitle, { duration: 1.5, text: "Passion", repeat: 1, yoyo: true, repeatDelay: 2 })
-    .to(Subtitle, { duration: 1.5, text: "Journey", repeat: 1, yoyo: true, repeatDelay: 2 });
+subtitleRepeatTl.to(Subtitle, { duration: 1, text: "Innovation", repeat: 1, yoyo: true, repeatDelay: 1.25 })
+    .to(Subtitle, { duration: 1, text: "Skill", repeat: 1, yoyo: true, repeatDelay: 1.25 })
+    .to(Subtitle, { duration: 1, text: "Passion", repeat: 1, yoyo: true, repeatDelay: 1.25 })
+    .to(Subtitle, { duration: 1, text: "Journey", repeat: 1, yoyo: true, repeatDelay: 1.25 });
 
 // Add the subtitleRepeatTl to the masterTl.
 // It will start immediately after the "#subtitle-prefix" animation finishes.
@@ -110,16 +107,16 @@ function showSubdomains() {
   gsap.from(".subdomain-section-title", {
     opacity: 0,
     y: 10,
-    duration: 0.7,
-    stagger: 0.15,
+    duration: 0.45,
+    stagger: 0.08,
     ease: "power2.out"
   });
 
   gsap.from(".subdomain-card", {
-    y: 24,
+    y: 20,
     opacity: 0,
-    duration: 0.75,
-    stagger: 0.18,
+    duration: 0.48,
+    stagger: { amount: 0.5, from: "start" },
     ease: "power2.out",
     clearProps: "transform"
   });
