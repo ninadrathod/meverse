@@ -1,124 +1,85 @@
 /* ----------------------------------------------------------
-     section 1: Loading background grid
+     section 1: Tabs — Projects / Tutorials
    ---------------------------------------------------------- */
 
-   const svg = document.querySelector('.grid');
+const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+const indicator = document.querySelector(".tab-indicator");
+const hasGsap = typeof gsap !== "undefined";
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-   // Vertical lines
-   for (let i = 2; i < 100; i += 2) {
-     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-     line.setAttribute('x1', `${i}%`);
-     line.setAttribute('x2', `${i}%`);
-     line.setAttribute('y1', '0');
-     line.setAttribute('y2', '100%');
-     svg.appendChild(line);
-   }
-   
-   // Horizontal lines
-   for (let i = 4; i < 100; i += 4) {
-     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-     line.setAttribute('x1', '0');
-     line.setAttribute('x2', '100%');
-     line.setAttribute('y1', `${i}%`);
-     line.setAttribute('y2', `${i}%`);
-     svg.appendChild(line);
-   }
-   
-   /* ----------------------------------------------------------
-        section 2: GSAP animations for page content
-      ---------------------------------------------------------- */
-   
-  // --------------------------- title animation ------------------------------------
-   
-   var title = document.querySelector("#title-container")
-   var titleText = title.textContent;
-   var splittedText = titleText.split("");
-   // Creating text clutter
-   var clutter="";
-   let cntr = 0
-   splittedText.forEach(function(elem){
-    if(cntr < 2){clutter += `<span class="roboto-me text-[4vh] md:text-[5.5vh] lg:text-[7.5vh] tracking-tighter">${elem}</span>`;}
-    else{clutter += `<span class="roboto-verse text-[4vh] md:text-[5.5vh] lg:text-[7.5vh] tracking-tighter">${elem}</span>`;}
-    cntr++;
-   });
-
-   title.innerHTML = clutter;
-
-   gsap.timeline()
-    .from("#title-container span", {
-      y: -36,
-      opacity: 0,
-      duration: 0.42,
-      stagger: 0.04,
-      ease: "power3.out",
-    })
-    .add(showSubdomains, 0.22);
-   
-  // --------------------------- subtite animation ----------------------------------
-  
-    gsap.from("#cursor", {
-        delay: 0.55,
-        opacity:0,
-        repeat:-1,
-        yoyo:true,
-        duration:0.5,
-        ease:"power2.inOut",
-        paddingLeft:"1%"
-      });
-
-    // Get the subtitle element once
-const Subtitle = document.getElementById("subtitle");
-
-// Create the main timeline. This one will NOT repeat infinitely.
-let masterTl = gsap.timeline(); // Removed repeat: -1 from here
-
-// Add the initial #subtitle-prefix animation to the master timeline
-masterTl.to("#subtitle-prefix", {
-    duration: 0.65,
-    delay: 0.75,
-    text: "Showcase your"
+// Entry counts next to each tab label
+document.querySelectorAll("[data-count-for]").forEach(function (el) {
+  const panel = document.getElementById(el.dataset.countFor);
+  el.textContent = String(panel.querySelectorAll(".entry").length).padStart(2, "0");
 });
 
-// Create a sub-timeline for the repeating #subtitle animation.
-// This timeline IS set to repeat infinitely.
-let subtitleRepeatTl = gsap.timeline({
-    repeat: -1, // This timeline will repeat infinitely
-    repeatDelay: 0 // No delay between repeats of this sub-timeline
+function moveIndicator(tab) {
+  const label = tab.querySelector(".tab-label");
+  indicator.style.width = `${label.offsetWidth}px`;
+  indicator.style.transform = `translateX(${tab.offsetLeft}px)`;
+}
+
+function selectTab(tab, { focus = false, animate = true } = {}) {
+  tabs.forEach(function (t) {
+    const selected = t === tab;
+    t.setAttribute("aria-selected", String(selected));
+    t.tabIndex = selected ? 0 : -1;
+    document.getElementById(t.getAttribute("aria-controls")).hidden = !selected;
+  });
+
+  if (focus) tab.focus();
+  moveIndicator(tab);
+  history.replaceState(null, "", `#${tab.id.replace("tab-", "")}`);
+
+  if (animate && hasGsap && !reduceMotion) {
+    const panel = document.getElementById(tab.getAttribute("aria-controls"));
+    gsap.fromTo(panel.querySelectorAll(".entries > li"),
+      { y: 18, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.45, stagger: 0.035, ease: "power3.out", clearProps: "transform,opacity" }
+    );
+  }
+}
+
+tabs.forEach(function (tab, i) {
+  tab.addEventListener("click", function () {
+    if (tab.getAttribute("aria-selected") !== "true") selectTab(tab);
+  });
+
+  tab.addEventListener("keydown", function (e) {
+    let next = null;
+    if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
+    if (e.key === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
+    if (e.key === "Home") next = tabs[0];
+    if (e.key === "End") next = tabs[tabs.length - 1];
+    if (next) {
+      e.preventDefault();
+      selectTab(next, { focus: true });
+    }
+  });
 });
 
-subtitleRepeatTl.to(Subtitle, { duration: 1, text: "Innovation", repeat: 1, yoyo: true, repeatDelay: 1.25 })
-    .to(Subtitle, { duration: 1, text: "Skill", repeat: 1, yoyo: true, repeatDelay: 1.25 })
-    .to(Subtitle, { duration: 1, text: "Passion", repeat: 1, yoyo: true, repeatDelay: 1.25 })
-    .to(Subtitle, { duration: 1, text: "Journey", repeat: 1, yoyo: true, repeatDelay: 1.25 });
+// Open the tab named in the URL hash (#projects / #tutorials)
+const initialTab = document.getElementById(`tab-${location.hash.slice(1)}`) || tabs[0];
+selectTab(initialTab, { animate: false });
 
-// Add the subtitleRepeatTl to the masterTl.
-// It will start immediately after the "#subtitle-prefix" animation finishes.
-masterTl.add(subtitleRepeatTl);
+window.addEventListener("resize", function () {
+  moveIndicator(tabs.find(function (t) { return t.getAttribute("aria-selected") === "true"; }));
+});
+document.fonts && document.fonts.ready.then(function () {
+  moveIndicator(tabs.find(function (t) { return t.getAttribute("aria-selected") === "true"; }));
+});
 
 /* ----------------------------------------------------------
-     section 3: Subdomain portal animations
+     section 2: Intro
    ---------------------------------------------------------- */
 
-gsap.set("#subdomains", { opacity: 0 });
+document.getElementById("year").textContent = new Date().getFullYear();
 
-function showSubdomains() {
-  gsap.set("#subdomains", { opacity: 1 });
-
-  gsap.from(".subdomain-section-title", {
-    opacity: 0,
-    y: 10,
-    duration: 0.45,
-    stagger: 0.08,
-    ease: "power2.out"
-  });
-
-  gsap.from(".subdomain-card", {
-    y: 20,
-    opacity: 0,
-    duration: 0.48,
-    stagger: { amount: 0.5, from: "start" },
-    ease: "power2.out",
-    clearProps: "transform"
-  });
+if (hasGsap && !reduceMotion) {
+  gsap.timeline()
+    .from(".wordmark > span", { yPercent: 60, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power4.out" })
+    .from(".tabs", { opacity: 0, y: 14, duration: 0.5, ease: "power2.out" }, "-=0.3")
+    .from(".panel:not([hidden]) .entries > li", {
+      y: 18, opacity: 0, duration: 0.45, stagger: 0.04, ease: "power3.out", clearProps: "transform,opacity"
+    }, "-=0.25");
 }
-    
