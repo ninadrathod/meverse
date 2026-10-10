@@ -22,6 +22,7 @@ A personal landing page at [meverse.in](https://meverse.in) — a showcase of my
 | [docker-tute.meverse.in](https://docker-tute.meverse.in) | Docker tutorial |
 | [k8s-tute.meverse.in](https://k8s-tute.meverse.in) | Kubernetes tutorial |
 | [agentic-ai-tute.meverse.in](https://agentic-ai-tute.meverse.in) | Agentic AI tutorial |
+| [python-101.meverse.in](https://python-101.meverse.in) | Python 101 tutorial |
 
 ## Stack
 
